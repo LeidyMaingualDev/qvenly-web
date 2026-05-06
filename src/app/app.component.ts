@@ -4,11 +4,12 @@ import { NavComponent } from './shared/principalShares/nav/nav.component';
 import { FooterComponent } from './shared/principalShares/footer/footer.component';
 import { HomeComponent } from './features/landing/home/home.component';
 import { FeaturesSectionComponent } from './features/landing/features-section/features-section.component';
+import { EventTypesSectionComponent } from './features/landing/event-types-section/event-types-section.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent, FooterComponent, HomeComponent, FeaturesSectionComponent],
+  imports: [RouterOutlet, NavComponent, FooterComponent, HomeComponent, FeaturesSectionComponent, EventTypesSectionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
