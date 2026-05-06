@@ -11,11 +11,7 @@ import { PricingComponent } from './features/pricing/pricing.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-<<<<<<< Updated upstream
   imports: [RouterOutlet, NavComponent, FooterComponent, HomeComponent, FeaturesSectionComponent, EventTypesSectionComponent, CtaSectionComponent, PricingComponent],
-=======
-  imports: [RouterOutlet, NavComponent, FooterComponent, HomeComponent, FeaturesSectionComponent],
->>>>>>> Stashed changes
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
