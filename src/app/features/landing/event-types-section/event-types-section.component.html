@@ -1,54 +1,63 @@
 <section class="w-full bg-gray-50 py-20">
-  <div class="max-w-7xl mx-auto px-6 md:px-8">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
 
-    <!-- Título -->
-    <div class="text-center mb-16">
-      <p class="text-teal-500 text-sm font-medium mb-2">Tipos de Evento</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
-        Perfecto para cualquier tipo de evento
-      </h2>
-      <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
-        Desde conferencias empresariales hasta festivales culturales, Qvenly se adapta a tus necesidades.
-      </p>
+        <!-- Título -->
+        <div class="text-center mb-16">
+            <div
+                class="inline-flex items-center gap-2 bg-teal-50 border border-teal-100 text-teal-600 text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
+                <span class="w-1.5 h-1.5 bg-teal-500 rounded-full"></span>
+                Tipos de Evento
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">
+                Perfecto para cualquier tipo de evento
+            </h2>
+            <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
+                Desde conferencias empresariales hasta festivales culturales, Qvenly se adapta a tus necesidades.
+            </p>
+        </div>
+
+        <!-- Grid de cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Eventos Educativos -->
+            <div
+                class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-purple-600 to-purple-900 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
+                <span
+                    class="absolute top-4 right-4 bg-white/20 text-white text-xs px-3 py-1 rounded-full">Popular</span>
+                <div class="text-white">
+                    <h3 class="text-xl font-bold mb-1">Eventos Educativos</h3>
+                    <p class="text-white/70 text-sm">Conferencias, talleres y seminarios académicos</p>
+                </div>
+            </div>
+
+            <!-- Eventos Empresariales -->
+            <div
+                class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-orange-400 to-orange-600 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
+                <span class="absolute top-4 right-4 bg-white/20 text-white text-xs px-3 py-1 rounded-full">Nuevo</span>
+                <div class="text-white">
+                    <h3 class="text-xl font-bold mb-1">Eventos Empresariales</h3>
+                    <p class="text-white/70 text-sm">Cumbres corporativas y lanzamientos de productos</p>
+                </div>
+            </div>
+
+            <!-- Eventos Deportivos -->
+            <div
+                class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-gray-800 to-gray-950 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
+                <div class="text-white">
+                    <h3 class="text-xl font-bold mb-1">Eventos Deportivos</h3>
+                    <p class="text-white/70 text-sm">Torneos, competencias y maratones multidisciplinarios</p>
+                </div>
+            </div>
+
+            <!-- Festivales y Cultura -->
+            <div
+                class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-orange-500 to-yellow-500 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
+                <div class="text-white">
+                    <h3 class="text-xl font-bold mb-1">Festivales y Cultura</h3>
+                    <p class="text-white/70 text-sm">Festivales de arte, música y gastronomía</p>
+                </div>
+            </div>
+
+        </div>
     </div>
-
-    <!-- Grid de cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <!-- Eventos Educativos -->
-      <div class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-purple-600 to-purple-900 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
-        <span class="absolute top-4 right-4 bg-white/20 text-white text-xs px-3 py-1 rounded-full">Popular</span>
-        <div class="text-white">
-          <h3 class="text-xl font-bold mb-1">Eventos Educativos</h3>
-          <p class="text-white/70 text-sm">Conferencias, talleres y seminarios académicos</p>
-        </div>
-      </div>
-
-      <!-- Eventos Empresariales -->
-      <div class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-orange-400 to-orange-600 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
-        <span class="absolute top-4 right-4 bg-white/20 text-white text-xs px-3 py-1 rounded-full">Nuevo</span>
-        <div class="text-white">
-          <h3 class="text-xl font-bold mb-1">Eventos Empresariales</h3>
-          <p class="text-white/70 text-sm">Cumbres corporativas y lanzamientos de productos</p>
-        </div>
-      </div>
-
-      <!-- Eventos Deportivos -->
-      <div class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-gray-800 to-gray-950 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
-        <div class="text-white">
-          <h3 class="text-xl font-bold mb-1">Eventos Deportivos</h3>
-          <p class="text-white/70 text-sm">Torneos, competencias y maratones multidisciplinarios</p>
-        </div>
-      </div>
-
-      <!-- Festivales y Cultura -->
-      <div class="relative rounded-2xl overflow-hidden h-48 bg-gradient-to-br from-orange-500 to-yellow-500 p-6 flex flex-col justify-end cursor-pointer hover:scale-105 transition-transform duration-300">
-        <div class="text-white">
-          <h3 class="text-xl font-bold mb-1">Festivales y Cultura</h3>
-          <p class="text-white/70 text-sm">Festivales de arte, música y gastronomía</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </section>
