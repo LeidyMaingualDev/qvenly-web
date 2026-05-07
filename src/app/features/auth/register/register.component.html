@@ -1,80 +1,82 @@
 <div class="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-  <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
+    <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
 
-    <!-- Logo -->
-    <div class="flex items-center justify-center gap-2 mb-6">
-      <img src="assets/images/logoQvenly.png" alt="Qvenly logo" class="h-8 w-auto">
-      <span class="text-xl font-bold text-teal-500">Qvenly</span>
+        <!-- Logo -->
+        <div class="flex items-center justify-center gap-2 mb-6">
+            <img src="assets/images/logoQvenly.png" alt="Qvenly logo" class="h-8 w-auto">
+            <span class="text-xl font-bold text-teal-500">Qvenly</span>
+        </div>
+
+        <!-- Título -->
+        <h2 class="text-2xl font-bold text-gray-900 text-center mb-1">Registrarse</h2>
+        <p class="text-gray-500 text-sm text-center mb-6">Crea tu cuenta en Qvenly</p>
+
+        <!-- Formulario -->
+        <div class="flex flex-col gap-4">
+
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-gray-700">Nombres</label>
+                <input type="text" placeholder="Juan"
+                    class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors" />
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-gray-700">Apellidos</label>
+                <input type="text" placeholder="Pérez"
+                    class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors" />
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <input type="email" placeholder="tu@email.com"
+                    class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors" />
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-gray-700">Tipo de Identificación</label>
+                <select
+                    class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors text-gray-500">
+                    <option value="" disabled selected>Seleccionar</option>
+                    <option value="CC">Cédula de Ciudadanía</option>
+                    <option value="CE">Cédula de Extranjería</option>
+                    <option value="PASSPORT">Pasaporte</option>
+                    <option value="TI">Tarjeta de Identidad</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-gray-700">Número de Identificación</label>
+                <input type="text" placeholder="123456789"
+                    class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors" />
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-gray-700">Número de Teléfono</label>
+                <input type="tel" placeholder="+573001234567"
+                    class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors" />
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-sm font-medium text-gray-700">Contraseña <span
+                        class="text-gray-400 font-normal">(mín. 8 caracteres, incluir mayúsculas y
+                        números)</span></label>
+                <input type="password" placeholder="••••••••"
+                    class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors" />
+            </div>
+
+            <button
+                class="w-full bg-teal-500 text-white py-3 rounded-lg text-sm font-medium hover:bg-teal-600 transition-colors mt-2">
+                Crear Cuenta
+            </button>
+
+        </div>
+
+        <!-- Login -->
+        <p class="text-center text-sm text-gray-500 mt-6">
+            ¿Ya tienes cuenta?
+            <a routerLink="/auth/login" class="text-teal-500 font-medium hover:text-teal-600 transition-colors">Iniciar
+                Sesión</a>
+        </p>
+
     </div>
-
-    <!-- Título -->
-    <h2 class="text-2xl font-bold text-gray-900 text-center mb-1">Registrarse</h2>
-    <p class="text-gray-500 text-sm text-center mb-6">Crea tu cuenta en Qvenly</p>
-
-    <!-- Formulario -->
-    <div class="flex flex-col gap-4">
-
-      <div class="flex flex-col gap-1">
-        <label class="text-sm font-medium text-gray-700">Nombres</label>
-        <input
-          type="text"
-          placeholder="Juan"
-          class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors"/>
-      </div>
-
-      <div class="flex flex-col gap-1">
-        <label class="text-sm font-medium text-gray-700">Apellidos</label>
-        <input
-          type="text"
-          placeholder="Pérez"
-          class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors"/>
-      </div>
-
-      <div class="flex flex-col gap-1">
-        <label class="text-sm font-medium text-gray-700">Correo Electrónico</label>
-        <input
-          type="email"
-          placeholder="tu@email.com"
-          class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors"/>
-      </div>
-
-      <div class="flex flex-col gap-1">
-        <label class="text-sm font-medium text-gray-700">Tipo de Identificación</label>
-        <select class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors text-gray-500">
-          <option value="" disabled selected>Seleccionar</option>
-          <option value="cc">Cédula de Ciudadanía</option>
-          <option value="ce">Cédula de Extranjería</option>
-          <option value="passport">Pasaporte</option>
-        </select>
-      </div>
-
-      <div class="flex flex-col gap-1">
-        <label class="text-sm font-medium text-gray-700">Número de Identificación</label>
-        <input
-          type="text"
-          placeholder="123456789"
-          class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors"/>
-      </div>
-
-      <div class="flex flex-col gap-1">
-        <label class="text-sm font-medium text-gray-700">Contraseña <span class="text-gray-400 font-normal">(mín. 8 caracteres, incluir mayúsculas y números)</span></label>
-        <input
-          type="password"
-          placeholder="••••••••"
-          class="border border-gray-300 rounded-lg px-4 py-3 text-sm outline-none focus:border-teal-500 transition-colors"/>
-      </div>
-
-      <button class="w-full bg-teal-500 text-white py-3 rounded-lg text-sm font-medium hover:bg-teal-600 transition-colors mt-2">
-        Crear Cuenta
-      </button>
-
-    </div>
-
-    <!-- Login -->
-    <p class="text-center text-sm text-gray-500 mt-6">
-      ¿Ya tienes cuenta?
-      <a routerLink="/auth/login" class="text-teal-500 font-medium hover:text-teal-600 transition-colors">Iniciar Sesión</a>
-    </p>
-
-  </div>
 </div>
