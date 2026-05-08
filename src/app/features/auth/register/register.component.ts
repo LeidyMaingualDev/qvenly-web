@@ -28,7 +28,7 @@ export class RegisterComponent {
   successMessage = '';
   isLoading = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
     this.isLoading = true;
@@ -38,8 +38,11 @@ export class RegisterComponent {
     this.authService.register(this.registerData).subscribe({
       next: (response) => {
         if (response.success) {
-          this.authService.saveToken(response.data.token, response.data.refreshToken);
-          this.authService.saveUserInfo(response.data.name, response.data.email, response.data.role);
+          this.authService.saveUserInfo(
+            response.data.name,
+            response.data.email,
+            response.data.role
+          );
           this.router.navigate(['/']);
         } else {
           this.errorMessage = response.message;

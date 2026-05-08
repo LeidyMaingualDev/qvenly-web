@@ -9,7 +9,7 @@ export const roleGuard: CanActivateFn = () => {
   if (authService.getRole() === 'ADMIN') {
     return true;
   }
-
-  router.navigate(['/']);
+  
+router.navigate(['/']);
   return false;
 };

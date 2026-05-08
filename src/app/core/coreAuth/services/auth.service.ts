@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { environment } from '../../../../environments/environment.development';
 import {
   LoginRequest,
@@ -20,27 +20,34 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(request: LoginRequest): Observable<ApiResponse<AuthResponse>> {
-    return this.http.post<ApiResponse<AuthResponse>>(`${this.apiUrl}/login`, request);
+    return this.http.post<ApiResponse<AuthResponse>>(
+      `${this.apiUrl}/login`, 
+      request,
+      { withCredentials: true }
+    );
   }
 
   register(request: RegisterRequest): Observable<ApiResponse<AuthResponse>> {
-    return this.http.post<ApiResponse<AuthResponse>>(`${this.apiUrl}/register`, request);
+    return this.http.post<ApiResponse<AuthResponse>>(
+      `${this.apiUrl}/register`, 
+      request,
+      { withCredentials: true }
+    );
   }
 
   forgotPassword(request: ForgotPasswordRequest): Observable<ApiResponse<void>> {
-    return this.http.post<ApiResponse<void>>(`${this.apiUrl}/forgot-password`, request);
+    return this.http.post<ApiResponse<void>>(
+      `${this.apiUrl}/forgot-password`, 
+      request
+    );
   }
 
   logout(): Observable<ApiResponse<void>> {
-    const token = this.getToken();
-    return this.http.post<ApiResponse<void>>(`${this.apiUrl}/logout`, {}, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-  }
-
-  saveToken(token: string, refreshToken: string): void {
-    localStorage.setItem('token', token);
-    localStorage.setItem('refreshToken', refreshToken);
+    return this.http.post<ApiResponse<void>>(
+      `${this.apiUrl}/logout`, 
+      {},
+      { withCredentials: true }
+    );
   }
 
   saveUserInfo(name: string, email: string, role: string): void {
@@ -49,8 +56,8 @@ export class AuthService {
     localStorage.setItem('role', role);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  getUserName(): string | null {
+    return localStorage.getItem('name');
   }
 
   getRole(): string | null {
@@ -58,12 +65,10 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    return !!localStorage.getItem('role');
   }
 
   clearSession(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('refreshToken');
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.removeItem('role');

@@ -26,24 +26,27 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    this.isLoading = true;
-    this.errorMessage = '';
+  this.isLoading = true;
+  this.errorMessage = '';
 
-    this.authService.login(this.loginData).subscribe({
-      next: (response) => {
-        if (response.success) {
-          this.authService.saveToken(response.data.token, response.data.refreshToken);
-          this.authService.saveUserInfo(response.data.name, response.data.email, response.data.role);
-          this.router.navigate(['/']);
-        } else {
-          this.errorMessage = response.message;
-        }
-        this.isLoading = false;
-      },
-      error: (err) => {
-        this.errorMessage = err.error?.message || 'Error al iniciar sesión';
-        this.isLoading = false;
+  this.authService.login(this.loginData).subscribe({
+    next: (response) => {
+      if (response.success) {
+        this.authService.saveUserInfo(
+          response.data.name,
+          response.data.email,
+          response.data.role
+        );
+        this.router.navigate(['/']);
+      } else {
+        this.errorMessage = response.message;
       }
-    });
-  }
+      this.isLoading = false;
+    },
+    error: (err) => {
+      this.errorMessage = err.error?.message || 'Error al iniciar sesión';
+      this.isLoading = false;
+    }
+  });
+}
 }
