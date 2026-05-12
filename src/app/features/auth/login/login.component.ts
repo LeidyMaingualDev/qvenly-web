@@ -37,7 +37,7 @@ export class LoginComponent {
           response.data.email,
           response.data.role
         );
-        this.router.navigate(['/']);
+        this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = response.message;
       }
