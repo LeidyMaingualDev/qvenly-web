@@ -27,6 +27,12 @@ export const routes: Routes = [
       import('./features/auth/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
   },
   {
+    path: 'dashboard',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/dashboard/user-dashboard/user-dashboard.component').then(m => m.UserDashboardComponent)
+  },
+  {
     path: '**',
     redirectTo: ''
   }
