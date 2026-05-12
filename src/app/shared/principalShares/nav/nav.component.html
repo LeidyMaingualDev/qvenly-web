@@ -1,65 +1,85 @@
 <nav class="w-full bg-white border-b border-gray-100 fixed top-0 left-0 z-50">
 
-    <!-- Barra principal -->
-    <div class="flex items-center justify-between px-6 md:px-8 py-4">
+  <!-- Barra principal -->
+  <div class="flex items-center justify-between px-6 md:px-8 py-4">
 
-        <!-- Logo + Nombre (siempre visible) -->
-        <div class="flex items-center gap-2">
-            <img src="assets/images/logoQvenly.png" alt="Qvenly logo" class="h-8 w-auto">
-            <span class="text-xl md:text-2xl font-bold text-teal-500">Qvenly</span>
-        </div>
+    <!-- Logo + Nombre (siempre visible) -->
+    <div class="flex items-center gap-2">
+      <img src="assets/images/logoQvenly.png" alt="Qvenly logo" class="h-8 w-auto">
+      <span class="text-xl md:text-2xl font-bold text-teal-500">Qvenly</span>
+    </div>
 
-        <!-- Links desktop -->
-        <ul class="hidden md:flex items-center gap-8 text-sm text-gray-600">
-            <li><a routerLink="/" class="hover:text-teal-500 transition-colors">Inicio</a></li>
-            <li><a href="/#caracteristicas" class="hover:text-teal-500 transition-colors">Características</a></li>
-            <li><a href="/#tipos-evento" class="hover:text-teal-500 transition-colors">Tipos de Evento</a></li>
-            <li><a href="/#planes" class="hover:text-teal-500 transition-colors">Planes</a></li>
-            <li><a href="#" class="hover:text-teal-500 transition-colors">Ayuda</a></li>
-        </ul>
+    <!-- Links desktop -->
+    <ul class="hidden md:flex items-center gap-8 text-sm text-gray-600">
+      <li><a routerLink="/" class="hover:text-teal-500 transition-colors">Inicio</a></li>
+      <li><a href="/#caracteristicas" class="hover:text-teal-500 transition-colors">Características</a></li>
+      <li><a href="/#tipos-evento" class="hover:text-teal-500 transition-colors">Tipos de Evento</a></li>
+      <li><a href="/#planes" class="hover:text-teal-500 transition-colors">Planes</a></li>
+      <li><a href="#" class="hover:text-teal-500 transition-colors">Ayuda</a></li>
+    </ul>
 
-        <!-- Actions desktop -->
-        <div class="hidden md:flex items-center gap-3">
-            <a routerLink="/auth/login" class="text-sm text-gray-600 hover:text-teal-500 transition-colors">
-                Iniciar Sesión
-            </a>
-            <a routerLink="/auth/register"
-                class="text-sm bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors">
-                Registrarse
-            </a>
-        </div>
-
-        <!-- Botón hamburguesa (solo móvil) -->
-        <button class="md:hidden flex flex-col gap-1.5 p-2" (click)="toggleMenu()">
-            <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300" [class.rotate-45]="isMenuOpen"
-                [class.translate-y-2]="isMenuOpen">
-            </span>
-            <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300" [class.opacity-0]="isMenuOpen">
-            </span>
-            <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300" [class.-rotate-45]="isMenuOpen"
-                [class.-translate-y-2]="isMenuOpen">
-            </span>
+    <!-- Actions desktop -->
+    <div class="hidden md:flex items-center gap-3">
+      <ng-container *ngIf="!isAuthenticated">
+        <a routerLink="/auth/login" class="text-sm text-gray-600 hover:text-teal-500 transition-colors">
+          Iniciar Sesión
+        </a>
+        <a routerLink="/auth/register" class="text-sm bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors">
+          Registrarse
+        </a>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated">
+        <span class="text-sm text-gray-600">Hola, <strong>{{ userName }}</strong></span>
+        <button (click)="onLogout()" class="text-sm bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+          Cerrar Sesión
         </button>
-
+      </ng-container>
     </div>
 
-    <!-- Menú móvil -->
-    <div class="md:hidden overflow-hidden transition-all duration-300" [class.max-h-0]="!isMenuOpen"
-        [class.max-h-96]="isMenuOpen">
-        <ul class="flex flex-col px-6 pb-4 gap-4 text-sm text-gray-600">
-            <li><a routerLink="/" class="hover:text-teal-500 transition-colors">Inicio</a></li>
-            <li><a href="/#caracteristicas" class="hover:text-teal-500 transition-colors">Características</a></li>
-            <li><a href="/#tipos-evento" class="hover:text-teal-500 transition-colors">Tipos de Evento</a></li>
-            <li><a href="/#planes" class="hover:text-teal-500 transition-colors">Planes</a></li>
-            <li><a href="#" class="hover:text-teal-500 transition-colors">Ayuda</a></li>
-            <li class="flex flex-col gap-2 pt-2 border-t border-gray-100">
-                <a routerLink="/auth/login" class="text-gray-600 hover:text-teal-500 transition-colors">Iniciar
-                    Sesión</a>
-                <a routerLink="/auth/register"
-                    class="text-center bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors">
-                    Registrarse
-                </a>
-            </li>
-        </ul>
-    </div>
-    <nav>
+    <!-- Botón hamburguesa (solo móvil) -->
+    <button class="md:hidden flex flex-col gap-1.5 p-2" (click)="toggleMenu()">
+      <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300"
+        [class.rotate-45]="isMenuOpen"
+        [class.translate-y-2]="isMenuOpen">
+      </span>
+      <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300"
+        [class.opacity-0]="isMenuOpen">
+      </span>
+      <span class="block w-6 h-0.5 bg-gray-600 transition-all duration-300"
+        [class.-rotate-45]="isMenuOpen"
+        [class.-translate-y-2]="isMenuOpen">
+      </span>
+    </button>
+
+  </div>
+
+  <!-- Menú móvil -->
+  <div class="md:hidden overflow-hidden transition-all duration-300"
+    [class.max-h-0]="!isMenuOpen"
+    [class.max-h-96]="isMenuOpen">
+    <ul class="flex flex-col px-6 pb-4 gap-4 text-sm text-gray-600">
+      <li><a routerLink="/" class="hover:text-teal-500 transition-colors">Inicio</a></li>
+      <li><a href="/#caracteristicas" class="hover:text-teal-500 transition-colors">Características</a></li>
+      <li><a href="/#tipos-evento" class="hover:text-teal-500 transition-colors">Tipos de Evento</a></li>
+      <li><a href="/#planes" class="hover:text-teal-500 transition-colors">Planes</a></li>
+      <li><a href="#" class="hover:text-teal-500 transition-colors">Ayuda</a></li>
+      <li class="flex flex-col gap-2 pt-2 border-t border-gray-100">
+        <ng-container *ngIf="!isAuthenticated">
+          <a routerLink="/auth/login" class="text-gray-600 hover:text-teal-500 transition-colors">
+            Iniciar Sesión
+          </a>
+          <a routerLink="/auth/register" class="text-center bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors">
+            Registrarse
+          </a>
+        </ng-container>
+        <ng-container *ngIf="isAuthenticated">
+          <span class="text-sm text-gray-600">Hola, <strong>{{ userName }}</strong></span>
+          <button (click)="onLogout()" class="text-center bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+            Cerrar Sesión
+          </button>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+
+</nav>
