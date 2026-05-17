@@ -6,31 +6,50 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () =>
-      import('./features/landing/home/home.component').then(m => m.HomeComponent)
+      import('./shared/principalShares/layouts/main-layout/main-layout.component').then(m => m.MainLayoutComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./features/landing/home/home.component').then(m => m.HomeComponent)
+      },
+      {
+        path: 'dashboard',
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import('./features/dashboard/user-dashboard/user-dashboard.component').then(m => m.UserDashboardComponent)
+      }
+    ]
   },
   {
-    path: 'auth/login',
-    canActivate: [guestGuard],
+    path: '',
     loadComponent: () =>
-      import('./features/auth/login/login.component').then(m => m.LoginComponent)
-  },
-  {
-    path: 'auth/register',
-    canActivate: [guestGuard],
-    loadComponent: () =>
-      import('./features/auth/register/register.component').then(m => m.RegisterComponent)
-  },
-  {
-    path: 'auth/forgot-password',
-    canActivate: [guestGuard],
-    loadComponent: () =>
-      import('./features/auth/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
-  },
-  {
-    path: 'dashboard',
-    canActivate: [authGuard],
-    loadComponent: () =>
-      import('./features/dashboard/user-dashboard/user-dashboard.component').then(m => m.UserDashboardComponent)
+      import('./shared/principalShares/layouts/auth-layout/auth-layout.component').then(m => m.AuthLayoutComponent),
+    children: [
+      {
+        path: 'auth/login',
+        canActivate: [guestGuard],
+        loadComponent: () =>
+          import('./features/auth/login/login.component').then(m => m.LoginComponent)
+      },
+      {
+        path: 'auth/register',
+        canActivate: [guestGuard],
+        loadComponent: () =>
+          import('./features/auth/register/register.component').then(m => m.RegisterComponent)
+      },
+      {
+        path: 'auth/forgot-password',
+        canActivate: [guestGuard],
+        loadComponent: () =>
+          import('./features/auth/forgot-password/forgot-password.component').then(m => m.ForgotPasswordComponent)
+      },
+      {
+        path: 'auth/reset-password',
+        loadComponent: () =>
+          import('./features/auth/reset-password/reset-password.component').then(m => m.ResetPasswordComponent)
+      }
+    ]
   },
   {
     path: '**',
