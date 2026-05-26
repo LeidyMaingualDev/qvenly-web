@@ -33,24 +33,25 @@ export class RegisterComponent {
   onSubmit() {
     this.isLoading = true;
     this.errorMessage = '';
-    this.successMessage = '';
 
     this.authService.register(this.registerData).subscribe({
       next: (response) => {
         if (response.success) {
-          this.authService.saveUserInfo(
-            response.data.name,
-            response.data.email,
-            response.data.role
-          );
-          this.router.navigate(['/dashboard']);
+          this.successMessage = '📧 Registro exitoso. Revisa tu correo para confirmar tu cuenta.';
         } else {
           this.errorMessage = response.message;
         }
         this.isLoading = false;
       },
       error: (err) => {
-        this.errorMessage = err.error?.message || 'Error al registrarse';
+        if (err.error?.data) {
+          const campos = Object.entries(err.error.data)
+            .map(([campo, mensaje]) => `• ${mensaje}`)
+            .join('\n');
+          this.errorMessage = campos;
+        } else {
+          this.errorMessage = err.error?.message || 'Error al registrarse';
+        }
         this.isLoading = false;
       }
     });
